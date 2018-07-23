@@ -1,0 +1,47 @@
+server:
+  port: 2001
+spring:
+#  application:
+#    name: module-user
+  datasource:
+    dynamic:
+      master:
+        username: root
+        password: zk19930310
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://193.112.87.162:3306/spring_cloud?characterEncoding=utf8&useSSL=false
+        druid:
+          max-active: 8
+          min-idle: 2
+          max-wait: -1
+          initial-size: 3
+      slave:
+        one:
+          username: root
+          password: zk19930310
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://193.112.87.162:3306/spring_cloud?characterEncoding=utf8&useSSL=false
+          druid:
+            initial-size: 2
+            max-active: 6
+        two:
+          username: root
+          password: zk19930310
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://193.112.87.162:3306/spring_cloud?characterEncoding=utf8&useSSL=false
+          druid:
+            initial-size: 2
+            max-active: 6
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+  instance:
+    prefer-ip-address: true
+    status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+

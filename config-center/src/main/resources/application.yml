@@ -1,0 +1,21 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zkbfdz/spring-cloud-config-repo.git
+          username: zkbfdz
+          password: zk19930310
+          search-paths: repo
+server:
+  port: 1003
+
+
