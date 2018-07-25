@@ -29,21 +29,18 @@ public class ShiroConfig {
 
         //设置拦截器
         Map<String, String> filterChainDefinitionMap = Maps.newLinkedHashMap();
-
         //游客,开发权限
         filterChainDefinitionMap.put("/guest/**", "anon");
-
         //用户,需要角色权限user
         filterChainDefinitionMap.put("/user/**", "roles[user]");
-
         //管理员,需要角色权限admin
         filterChainDefinitionMap.put("/admin/**", "roles[admin]");
-
         //开放登录接口
         filterChainDefinitionMap.put("/login", "anon");
         //其余接口一律拦截
         //主要这行代码必须放在所有权限设置的最后,不谈会导致所有url都会被拦截
         filterChainDefinitionMap.put("/**", "authc");
+
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         System.out.println("Shiro拦截器注入成功!");
